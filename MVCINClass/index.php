@@ -1,7 +1,6 @@
 <?php
     include "./views/header.php";
 
-    echo ("<a href='./employee'>Employees</a>");
     echo("<a href='./product_catalog'>Catalog</a><br>");
     echo("<a href='./product_manager'>Manager</a>");
 
