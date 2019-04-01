@@ -1,8 +1,6 @@
 
 
 <?php
-    $pageName = "Product Manager";
-    
     include "../models/database.php";
     include "../views/header.php";
 
