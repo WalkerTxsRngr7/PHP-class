@@ -1,0 +1,3 @@
+<?php 
+    calcChange($prevPrice, $currPrice);
+?>
