@@ -9,7 +9,7 @@
 
     echo("<h4>$empFName " . " $empLName</h4><br>");
     echo("<img src='./photos/$empPhoto'>");
-    echo("<a href='?editID=$empID'>Edit</a>");
+    echo("<br><a href='?editID=$empID'>Edit</a>");
     
     
 ?>

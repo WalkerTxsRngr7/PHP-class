@@ -1,7 +1,6 @@
 <?php 
     
     
-    
     /** A FUNCTION THAT RETURNS ALL EMPLOYEES */
 function getAllEmps(){
     global $db;
@@ -33,13 +32,31 @@ function getAnEmployee($empID){
     return $employee;
 }
 
-function editEmployee($editID){
+function editEmployee($empID, $editfName, $editlName, $editPhoto){
     global $db;
-    $sql = "UPDATE `employee` SET `firstName`=[value-1],`lastName`=[value-2],`photo`=[value-3],`employeeID`=[value-4] WHERE `employeeID`";
+
+    if (isset($_POST['edited'])){
+        
+        echo("Worked!");
+        //$_FILES
+
+        $name = $_FILES['editPhoto']['name'];
+        $tmpName = $_FILES['editPhoto']['tmp_name'];
+        $dir = getcwd() . DIRECTORY_SEPARATOR . 'photos' . DIRECTORY_SEPARATOR . $name;
+        
+
+        echo($dir);
+        move_uploaded_file($tmpName, $dir);
+
+    }
+
+
+    $sql = "UPDATE `employee` SET `firstName`='$editfName',`lastName`='$editlName',`photo`='$name' WHERE `employeeID`='$empID'";
+    echo($sql);
+
+
     
 
     $qry = $db->query($sql);
-    // $employee = $qry->fetch();
 
-    return $employee;
 }
