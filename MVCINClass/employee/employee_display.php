@@ -5,10 +5,11 @@
     $employee = getAnEmployee($empID);
     $empFName = $employee['firstName'];
     $empLName = $employee['lastName'];
-    // $empPhoto = $employee['photo'];
+    $empPhoto = $employee['photo'];
 
-    echo("<h4>$fName $lName</h4><br>");
-    // echo("<img src='../images/$empPhoto.png'>");
+    echo("<h4>$empFName " . " $empLName</h4><br>");
+    echo("<img src='./photos/$empPhoto'>");
+    echo("<a href='?editID=$empID'>Edit</a>");
     
     
 ?>

@@ -1,12 +1,11 @@
 <?php
-    if (isset($_POST['myName'])){
+    if (isset($_POST['myImage'])){
         // echo("Worked!");
         //$_FILES
 
         $name = $_FILES['myImage']['name'];
-        $size = $_FILES['myImage']['size'] / 1024;
         $tmpName = $_FILES['myImage']['tmp_name'];
-        $dir = getcwd() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $name;
+        $dir = getcwd() . DIRECTORY_SEPARATOR . 'photos' . DIRECTORY_SEPARATOR . $name;
         
 
         // echo $name . " " . $size . " " . $tmpName;
