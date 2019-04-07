@@ -10,6 +10,7 @@
         //echo($category['categoryName'] . "<br>");
         echo($str);
     }
+    echo("<a href='?addEmp=TRUE'>Add Employee</a>");
 ?>
 
 </section>

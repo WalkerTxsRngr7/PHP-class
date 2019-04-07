@@ -12,13 +12,13 @@
     <div style="width:65%;float:right;padding-bottom:20px;">
         <h3>Edit Employee: <?=$firstName . " " . $lastName?></h3>
         <p>First Name: </p>
-        <input type="text" name="editfName" value="<?=$firstName?>">
+        <input type="text" name="firstName" value="<?=$firstName?>">
         <p>Last Name: </p>
-        <input type="text" name="editlName"value="<?=$lastName?>">
+        <input type="text" name="lastName"value="<?=$lastName?>">
         <br>
-        <img style="padding-top:15px;" src='<?="./photos/$photo"?>'>
+        <img style="padding-top:15px; width: 150px; height:auto;" src='<?="./photos/$photo"?>'>
         <br>
-        <input type="file" name="editPhoto" style="margin:15px 0px;">
+        <input type="file" name="photo" style="margin:15px 0px;">
         <br>
         <input type="submit" value="Submit">
         <input type="hidden" name="edited" value="true">

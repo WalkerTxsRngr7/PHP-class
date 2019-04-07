@@ -32,31 +32,52 @@ function getAnEmployee($empID){
     return $employee;
 }
 
-function editEmployee($empID, $editfName, $editlName, $editPhoto){
+function editEmployee($empID, $fName, $lName, $photo){
     global $db;
 
     if (isset($_POST['edited'])){
-        
-        echo("Worked!");
         //$_FILES
 
-        $name = $_FILES['editPhoto']['name'];
-        $tmpName = $_FILES['editPhoto']['tmp_name'];
+        $name = $_FILES['photo']['name'];
+        $tmpName = $_FILES['photo']['tmp_name'];
         $dir = getcwd() . DIRECTORY_SEPARATOR . 'photos' . DIRECTORY_SEPARATOR . $name;
-        
 
-        echo($dir);
+        // echo($dir);
         move_uploaded_file($tmpName, $dir);
 
     }
 
-
-    $sql = "UPDATE `employee` SET `firstName`='$editfName',`lastName`='$editlName',`photo`='$name' WHERE `employeeID`='$empID'";
-    echo($sql);
-
-
-    
-
+    $sql = "UPDATE `employee` SET `firstName`='$fName',`lastName`='$lName',`photo`='$name' WHERE `employeeID`='$empID'";
+    // echo($sql);
     $qry = $db->query($sql);
+}
 
+function deleteById($delID){
+    global $db;
+
+    // echo ("<br><h1>Deleting ID $delID</h1>");
+    $sql = "DELETE FROM `employee` WHERE `employeeID` = $delID";
+    // echo $sql;
+    $pdoS = $db->query($sql);
+}
+
+function addEmployee($fName, $lName, $photo){
+    global $db;
+
+    if (isset($_POST['added'])){
+        //$_FILES
+
+        $name = $_FILES['photo']['name'];
+        $tmpName = $_FILES['photo']['tmp_name'];
+        $dir = getcwd() . DIRECTORY_SEPARATOR . 'photos' . DIRECTORY_SEPARATOR . $name;
+
+        // echo($dir);
+        move_uploaded_file($tmpName, $dir);
+
+    }
+
+    // echo ("<br><h3 style='width:40%; float:right;'>Added $fName $lName</h3>");
+    $sql = "INSERT INTO `employee`(`firstName`, `lastName`, `photo`) VALUES ('$fName','$lName','$name')";
+    echo $sql;
+    $pdoS = $db->query($sql);
 }

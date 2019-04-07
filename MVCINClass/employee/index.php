@@ -9,36 +9,43 @@
     
     include "../models/employee_db.php";
     
-    $fName = filter_input(INPUT_GET, 'firstName');
-    $lName = filter_input(INPUT_GET, 'lastName');
-    $photo = filter_input(INPUT_GET, 'photo');
+    $fName = filter_input(INPUT_POST, 'firstName');
+    $lName = filter_input(INPUT_POST, 'lastName');
+    $photo = filter_input(INPUT_POST, 'photo');
     $empID = filter_input(INPUT_GET, 'empID');
     $editID = filter_input(INPUT_GET, 'editID');
     $edited = filter_input(INPUT_POST, 'edited');
-    $editfName = filter_input(INPUT_POST, 'editfName');
-    $editlName = filter_input(INPUT_POST, 'editlName');
-    $editPhoto = filter_input(INPUT_POST, 'editPhoto');
+    $addEmp = filter_input(INPUT_GET, 'addEmp');
+    $delID = filter_input(INPUT_GET, 'delID');
+    $added = filter_input(INPUT_POST, 'added');
+    // $editfName = filter_input(INPUT_POST, 'editfName');
+    // $editlName = filter_input(INPUT_POST, 'editlName');
+    // $editPhoto = filter_input(INPUT_POST, 'editPhoto');
     
 
     
     
+    
+    if ($delID != NULL){
+        deleteById($delID);
+    } else if ($added == TRUE){
+        addEmployee($fName, $lName, $photo);
+    } else if ($edited == TRUE){
+        editEmployee($empID, $fName, $lName, $photo);
+    }
+
     include "./employee_list.php";
+
     if ($empID != NULL){
         include "./employee_display.php";
     } else if ($editID != NULL){
         include "./edit_form.php";
-    }
-    if ($edited != NULL){
-        echo("<p>Edited!</p>");
-        editEmployee($empID, $editfName, $editlName, $editPhoto);
-
+    } else if ($addEmp != NULL){
+        include "./add_form.php";
     }
     
-    // if ($delID != NULL){
-    //     deleteById($delID);
-    // }
-    // if ($addProd == TRUE){
-    //     include "./add_form.php";
+    
+    //
     // } else {
     //     include "./category_list.php";
     //     include "./product_list.php";
