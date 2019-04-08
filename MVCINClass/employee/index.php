@@ -1,5 +1,3 @@
-
-
 <?php
     $pageName = "Employee";
 
@@ -18,9 +16,6 @@
     $addEmp = filter_input(INPUT_GET, 'addEmp');
     $delID = filter_input(INPUT_GET, 'delID');
     $added = filter_input(INPUT_POST, 'added');
-    // $editfName = filter_input(INPUT_POST, 'editfName');
-    // $editlName = filter_input(INPUT_POST, 'editlName');
-    // $editPhoto = filter_input(INPUT_POST, 'editPhoto');
     
 
     
