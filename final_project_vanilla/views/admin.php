@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+$lo = filter_input(INPUT_GET, 'lo');
+        if ($lo == "y"){
+            $_SESSION = array();
+            session_destroy();
+            header("Location: ./index.php");
+        }
 ?>
 
 
@@ -10,47 +17,28 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-
+    <title>Admin</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <?php
-        include "./database/db.php";
+        include "../database/db.php";
         // include "../views/header.php";
 
         
         //print_r($aryCat);
         // include "../models/categories_db.php";
-        include "./database/products_db.php";
+        include "../database/products_db.php";
     ?>
-
     <a href="?lo=y">Log Out</a> | <a href="admin.php">Admin</a>
-    <h1>Home</h1>
-    <button type="link" href='cart.php' id='cartBtn' class="btn btn-outline-info cartBtn">Cart</button>
-    <a href="./cart.php" class="btn btn-outline-info cartBtn">Cart</a>
+    <h1>Admin</h1>
 
-    <?php
-        $prodID = filter_input(INPUT_GET, "prodID");
-        $qty = filter_input(INPUT_GET, "qty");
 
-        $lo = filter_input(INPUT_GET, 'lo');
-        if ($lo == "y"){
-            $_SESSION = array();
-            session_destroy();
-            header("Location: index.php");
-        }
-        
 
-        include "./product/product_list.php";
-        if ($qty != null){
-            cart($prodID, $qty);
-        }
 
-    ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

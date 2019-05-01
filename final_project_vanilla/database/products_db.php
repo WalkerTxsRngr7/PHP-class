@@ -88,6 +88,7 @@ function printCart(){
         foreach ($_SESSION['cartItem'] as $items) {
             echo ("Order: <br>ProductID: " . $items[0] . "       Qty: " . $items[1] . "<br><br>");
         }
+        echo ("<button type='button' class='btn btn-outline-success'>Order</button>");
     }
     
 }
