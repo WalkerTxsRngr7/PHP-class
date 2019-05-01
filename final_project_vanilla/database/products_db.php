@@ -71,3 +71,23 @@ function addProduct($catID2, $prodName, $prodCode, $prodPrice){
     $sql = "INSERT INTO `products`(`categoryID`, `productCode`, `productName`, `listPrice`) VALUES ('$catID','$prodCode', '$prodName', '$prodPrice')";
     $pdoS = $db->query($sql);
 }
+
+function cart($prodID, $qty){
+    if (!isset($_SESSION['cartItem'])) {
+        $_SESSION['cartItem'] = array();
+    }
+    $message = "hello";
+    array_push($_SESSION['cartItem'],[$prodID, $qty]);
+    
+}
+function printCart(){
+    if (!isset($_SESSION['cartItem'])) {
+        echo ("<h1>Your cart is empty</h1>");
+    }
+    else{
+        foreach ($_SESSION['cartItem'] as $items) {
+            echo ("Order: <br>ProductID: " . $items[0] . "       Qty: " . $items[1] . "<br><br>");
+        }
+    }
+    
+}

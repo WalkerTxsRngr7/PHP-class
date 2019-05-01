@@ -1,0 +1,9 @@
+.input-group {
+    width: 150px;
+    
+}
+.cartBtn {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
