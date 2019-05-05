@@ -73,22 +73,36 @@ function addProduct($catID2, $prodName, $prodCode, $prodPrice){
 }
 
 function cart($productName, $qty){
-    if (!isset($_SESSION['cartItem'])) {
-        $_SESSION['cartItem'] = array();
+    if (!isset($_SESSION['order'])) {
+        $_SESSION['order'] = array();
     }
-    $message = "hello";
-    array_push($_SESSION['cartItem'],[$productName, $qty]);
+    array_push($_SESSION['order'],[$productName, $qty]);
     
 }
 function printCart(){
-    if (!isset($_SESSION['cartItem'])) {
+    if (!isset($_SESSION['order'])) {
         echo ("<h1>Your cart is empty</h1>");
     }
     else{
-        foreach ($_SESSION['cartItem'] as $items) {
-            echo ("Order: <br>Product: " . $items[0] . "       Qty: " . $items[1] . "<br><br>");
+        foreach ($_SESSION['order'] as $items) {
+            $product = prodById($items[0]);
+            echo ("Order: <br>Product: " . $product['productName'] . "       Qty: " . $items[1] . "<br><br>");
         }
-        echo ("<button type='submit' class='btn btn-outline-success'>Order</button>");
+        echo ("<button type='submit' class='btn btn-outline-success' name='order' value='confirm'>Order</button>");
     }
     
+}
+function order($customerName){
+    $_SESSION['name'] = $customerName;
+
+    $prodID = $_SESSION['order'][0][0];
+    echo($prodID. "<br>");
+    $qty = $_SESSION['order'][0][1];
+    echo($qty);
+
+
+    $sqlInsert = "INSERT INTO `order`(`productID`, `customerName`, `qtyOrdered`) VALUES ($prodID,$customerName,$qty)";
+    // print_r($productName);
+
+
 }

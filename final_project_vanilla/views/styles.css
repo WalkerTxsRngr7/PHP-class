@@ -11,3 +11,7 @@
     max-width: 350px;
     /* min-width: 250px; */
 }
+#name {
+    display: flex;
+    margin: 20px;
+}
