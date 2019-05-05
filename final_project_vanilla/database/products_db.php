@@ -72,12 +72,12 @@ function addProduct($catID2, $prodName, $prodCode, $prodPrice){
     $pdoS = $db->query($sql);
 }
 
-function cart($prodID, $qty){
+function cart($productName, $qty){
     if (!isset($_SESSION['cartItem'])) {
         $_SESSION['cartItem'] = array();
     }
     $message = "hello";
-    array_push($_SESSION['cartItem'],[$prodID, $qty]);
+    array_push($_SESSION['cartItem'],[$productName, $qty]);
     
 }
 function printCart(){
@@ -86,9 +86,9 @@ function printCart(){
     }
     else{
         foreach ($_SESSION['cartItem'] as $items) {
-            echo ("Order: <br>ProductID: " . $items[0] . "       Qty: " . $items[1] . "<br><br>");
+            echo ("Order: <br>Product: " . $items[0] . "       Qty: " . $items[1] . "<br><br>");
         }
-        echo ("<button type='button' class='btn btn-outline-success'>Order</button>");
+        echo ("<button type='submit' class='btn btn-outline-success'>Order</button>");
     }
     
 }
