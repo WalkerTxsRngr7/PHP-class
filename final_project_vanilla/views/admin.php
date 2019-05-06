@@ -10,7 +10,7 @@ include "../views/header.php";
 
 
 <?php
-  
+include './requests.php';
 include "footer.php";
   
 ?>

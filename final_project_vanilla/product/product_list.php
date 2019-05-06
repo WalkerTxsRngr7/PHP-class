@@ -20,18 +20,13 @@
                 <div class="card-body">
                     <h5 class="card-title"><?=$product['productName']?></h5>
                     <p class="card-text">$<?=$product['price']?></p>
-                    <form action="" method="get">
+                    <form action="cart.php" method="get">
                         <div class="input-group">
-                            <input type="hidden" name='productName' value="<?=$product['productName']?>">
-                            <input type="number" class='form-control rounded-left' name="qty" min="1"
+                            <input type="hidden" name='productID' value='<?=$product['productID']?>'>
+                            <input type="number" class='form-control rounded-0' name="qty" min="1"
                                 max="<?=$product['qty']?>" placeholder='Qty:'>
                             <div class="input-group-append">
-                                <div class="btn-group" role="group">
-                                    <button class="btn btn-outline-secondary rounded-0" type="submit">Add
-                                        Item(s)</button>
-                                    <button class="btn btn-outline-secondary" type="submit" name='orderNow'
-                                        value='now'>Order Now</button>
-                                </div>
+                                <button class="btn btn-outline-secondary rounded-0" type="submit">Order</button>
                             </div>
                         </div>
                     </form>

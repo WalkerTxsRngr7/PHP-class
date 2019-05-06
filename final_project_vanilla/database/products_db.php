@@ -41,8 +41,8 @@ function prodByCategory($catID){
 function prodByID($prodID){
     global $db;
 
-    $sql = "select * from products where productID = $prodID";
-    //echo $sql;
+    $sql = "select * from product where productID = $prodID";
+    // echo $sql;
     // $qry = mysqli_query($db, $sql);
 
     // $product = mysqli_fetch_all($qry, MYSQLI_ASSOC);
@@ -72,37 +72,36 @@ function addProduct($catID2, $prodName, $prodCode, $prodPrice){
     $pdoS = $db->query($sql);
 }
 
-function cart($productName, $qty){
-    if (!isset($_SESSION['order'])) {
-        $_SESSION['order'] = array();
-    }
-    array_push($_SESSION['order'],[$productName, $qty]);
+function cart($productID, $qty){
+    // if (!isset($_SESSION['order'])) {
+    //     $_SESSION['order'] = array();
+    // }
+    // array_push($_SESSION['order'],[$productName, $qty]);
+    // echo ("<p>")
+    $product = prodByID($productID);
+    echo("<br>Order: <br>Product: " . $product['productName'] . "       Qty: " . $qty . "<br><br>");
+    
     
 }
-function printCart(){
-    if (!isset($_SESSION['order'])) {
-        echo ("<h1>Your cart is empty</h1>");
-    }
-    else{
-        foreach ($_SESSION['order'] as $items) {
-            $product = prodById($items[0]);
-            echo ("Order: <br>Product: " . $product['productName'] . "       Qty: " . $items[1] . "<br><br>");
-        }
-        echo ("<button type='submit' class='btn btn-outline-success' name='order' value='confirm'>Order</button>");
-    }
-    
-}
-function order($customerName){
+function name($customerName){
     $_SESSION['name'] = $customerName;
+    print_r($_SESSION);
+}
 
-    $prodID = $_SESSION['order'][0][0];
-    echo($prodID. "<br>");
-    $qty = $_SESSION['order'][0][1];
-    echo($qty);
+function order($productID, $qty){
+    global $db;
+    $sqlInsert = "INSERT INTO `order`(`productID`, `customerName`, `qtyOrdered`) VALUES ($productID,'$_SESSION[name]',$qty)";
+    echo($sqlInsert);
 
+    
+    // $pdoS = $db->query($sqlInsert);
 
-    $sqlInsert = "INSERT INTO `order`(`productID`, `customerName`, `qtyOrdered`) VALUES ($prodID,$customerName,$qty)";
-    // print_r($productName);
+    $product = prodByID($productID);
+    $loweredQty = $product['qty'] - $qty;
+    // echo $loweredQty;
+    $sqlQty = "UPDATE `product` SET `qty`= $loweredQty WHERE `productID` = $productID";
+    echo ($sqlQty);
+    // $pdoS = $db->query($sqlQty);
 
 
 }
