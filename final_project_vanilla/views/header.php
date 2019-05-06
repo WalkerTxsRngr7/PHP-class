@@ -6,7 +6,7 @@ $lo = filter_input(INPUT_GET, 'lo');
         if ($lo == "y"){
             $_SESSION = array();
             session_destroy();
-            header("Location: ./index.php");
+            header("Location: ../product/index.php");
         }
 ?>
 
@@ -34,5 +34,5 @@ $lo = filter_input(INPUT_GET, 'lo');
         // include "../models/categories_db.php";
         include "../models/products_db.php";
     ?>
-
-    <a href="?lo=y">Log Out</a> | <a href="../product/index.php">Home</a> | <a href="../admin/admin.php">Admin</a>
+    <div class="container">
+        <a href="?lo=y">Log Out</a> | <a href="../product/index.php">Home</a>
