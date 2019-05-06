@@ -98,7 +98,6 @@ function order($productID, $qty){
 
     $product = prodByID($productID);
     $loweredQty = $product['qty'] - $qty;
-    // echo $loweredQty;
     $sqlQty = "UPDATE `product` SET `qty`= $loweredQty WHERE `productID` = $productID";
     echo ($sqlQty);
     // $pdoS = $db->query($sqlQty);

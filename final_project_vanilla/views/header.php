@@ -20,19 +20,19 @@ $lo = filter_input(INPUT_GET, 'lo');
     <title><?=$title?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../views/styles.css">
 </head>
 
 <body>
 
     <?php
-        include "../database/db.php";
+        include "../models/db.php";
         // include "../views/header.php";
 
         
         //print_r($aryCat);
         // include "../models/categories_db.php";
-        include "../database/products_db.php";
+        include "../models/products_db.php";
     ?>
 
-    <a href="?lo=y">Log Out</a> | <a href="index.php">Home</a> | <a href="admin.php">Admin</a>
+    <a href="?lo=y">Log Out</a> | <a href="../product/index.php">Home</a> | <a href="../admin/admin.php">Admin</a>

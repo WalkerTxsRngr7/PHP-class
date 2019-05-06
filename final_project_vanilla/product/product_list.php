@@ -26,7 +26,7 @@
                             <input type="number" class='form-control rounded-0' name="qty" min="1"
                                 max="<?=$product['qty']?>" placeholder='Qty:'>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary rounded-0" type="submit">Order</button>
+                                <button class="btn btn-outline-secondary rounded-0" type="submit">Cart</button>
                             </div>
                         </div>
                     </form>

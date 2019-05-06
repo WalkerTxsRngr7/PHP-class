@@ -6,3 +6,4 @@ $qty = filter_input(INPUT_GET, "qty");
 $order = filter_input(INPUT_GET, "order");
 $customerName = filter_input(INPUT_GET, "customerName");
 // $orderNow = filter_input(INPUT_GET, "orderNow");
+?>

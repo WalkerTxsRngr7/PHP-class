@@ -2,7 +2,7 @@
 session_start();
 $title = "Home";
 include "../views/header.php";
-include './requests.php';
+include '../models/requests.php';
 if ($customerName != ""){
     $_SESSION['name'] = $customerName;
     
@@ -68,5 +68,5 @@ else {
 
 
 
-include "footer.php";
+include "../views/footer.php";
 ?>
