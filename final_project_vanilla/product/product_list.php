@@ -7,7 +7,7 @@
     $aryProd = getAllProducts();
     ?>
 
-    <div class="container">
+    <!-- <div class="container"> -->
 
         <div class="card-deck">
 
@@ -15,13 +15,13 @@
             foreach($aryProd as $product){
             ?>
 
-            <div class="card">
+            <div class="card prodCard">
                 <img src="../images/<?=$product['imageName']?>" class="card-img-top" alt="<?=$product['productName']?>">
                 <div class="card-body">
                     <h5 class="card-title"><?=$product['productName']?></h5>
                     <p class="card-text">$<?=$product['price']?></p>
                     <form action="cart.php" method="get">
-                        <div class="input-group">
+                        <div class="input-group prodQtyBtn">
                             <input type="hidden" name='productID' value='<?=$product['productID']?>'>
                             <input type="number" class='form-control rounded-0' name="qty" min="1"
                                 max="<?=$product['qty']?>" placeholder='Qty:'>
@@ -39,5 +39,5 @@
             ?>
 
         </div>
-    </div>
+    <!-- </div> -->
 </section>

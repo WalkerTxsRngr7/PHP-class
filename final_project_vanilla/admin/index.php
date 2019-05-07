@@ -3,14 +3,16 @@ session_start();
 $title = "Admin";
 include "../views/header.php";
 
-
+$productID = filter_input(INPUT_POST, "productID");
 $username = filter_input(INPUT_POST, "username");
 $password = filter_input(INPUT_POST, "password");
 $adminBtn = filter_input(INPUT_POST, "adminBtn");
-$added = filter_input(INPUT_POST, "added");
-$addProdName = filter_input(INPUT_POST, "addProdName");
-$addQty = filter_input(INPUT_POST, "addQty");
-$addImage = filter_input(INPUT_POST, "addImage");
+$modify = filter_input(INPUT_POST, "modify");
+$newProdName = filter_input(INPUT_POST, "newProdName");
+$newPrice = filter_input(INPUT_POST, "newPrice");
+$newQty = filter_input(INPUT_POST, "newQty");
+$newImage = filter_input(INPUT_POST, "newImage");
+$oldImage = filter_input(INPUT_POST, "oldImage");
 ?>
 <h1>Admin</h1>
 
@@ -37,7 +39,7 @@ if (!empty($username) && !empty($password)){
 }
   
 if (isset($_SESSION['login']) == "valid"){
-    echo "<h1>You are logged in.</h1>";
+    // echo "<h1>You are logged in.</h1>";
     include "./admin.php";
 } else {
     include "./login.php";

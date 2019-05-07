@@ -56,6 +56,7 @@ function prodByID($prodID){
 
 }
 
+
 function deleteById($delID){
     global $db;
 
@@ -64,11 +65,19 @@ function deleteById($delID){
     $pdoS = $db->query($sql);
 }
 
-function addProduct($catID2, $prodName, $prodCode, $prodPrice){
+function addProduct($productName, $price, $qty, $imageName){
     global $db;
 
-    echo ("<br><h1>Added $prodName</h1>");
-    $sql = "INSERT INTO `products`(`categoryID`, `productCode`, `productName`, `listPrice`) VALUES ('$catID','$prodCode', '$prodName', '$prodPrice')";
+    echo ("<br><h1>Added $productName</h1>");
+    $sql = "INSERT INTO `product`(`productName`, `imageName`, `price`, `qty`) VALUES ('$productName','$imageName',$price,$qty)";
+    echo $sql;
+    $pdoS = $db->query($sql);
+}
+
+function editProduct($productName, $price, $qty, $imageName, $productID){
+    global $db;
+    echo ("<br><h1>Edited: $productName</h1>");
+    $sql = "UPDATE `product` SET `productName`='$productName',`imageName`='$imageName',`price`=$price,`qty`=$qty WHERE productID = $productID";
     $pdoS = $db->query($sql);
 }
 
@@ -80,12 +89,6 @@ function cart($productID, $qty){
     // echo ("<p>")
     $product = prodByID($productID);
     echo("<br>Order: <br>Product: " . $product['productName'] . "       Qty: " . $qty . "<br><br>");
-    
-    
-}
-function name($customerName){
-    $_SESSION['name'] = $customerName;
-    print_r($_SESSION);
 }
 
 function order($productID, $qty){
@@ -99,8 +102,23 @@ function order($productID, $qty){
     $product = prodByID($productID);
     $loweredQty = $product['qty'] - $qty;
     $sqlQty = "UPDATE `product` SET `qty`= $loweredQty WHERE `productID` = $productID";
-    echo ($sqlQty);
-    // $pdoS = $db->query($sqlQty);
+    $pdoS = $db->query($sqlQty);
+}
 
+/** RETURN AN ARRAY OF ALL ORDERS */
+function getAllOrders(){
+    global $db;
+    $sql = "SELECT * FROM `order`";
+    // $qry = mysqli_query($db, $sql);
+
+    // $aryProd = mysqli_fetch_all($qry, MYSQLI_ASSOC);
+
+    //oop
+    $qry = $db->query($sql);
+    $aryOrders= $qry->fetchAll();
+
+
+    //return an array of products
+    return $aryOrders;
 
 }

@@ -16,9 +16,9 @@ if (isset($_SESSION['login']) != "valid"){
 
 if ($adminBtn == "add"){
     include "./addForm.php";
-} else if ($adminBtn == "add"){
+} else if ($adminBtn == "edit"){
     include "./editForm.php";
-} else if ($adminBtn == "add"){
+} else if ($adminBtn == "orders"){
     include "orders.php";
 }
 

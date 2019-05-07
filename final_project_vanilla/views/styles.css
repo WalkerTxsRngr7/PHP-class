@@ -1,4 +1,4 @@
-.input-group {
+.prodQtyBtn {
     width: 200px;
     
 }
@@ -7,9 +7,13 @@
     right: 10px;
     top: 10px;
 }
-.card {
+.prodCard {
     max-width: 350px;
-    /* min-width: 250px; */
+    min-width: 250px;
+}
+.editCard {
+    max-width: 200px;
+    min-width: 150px;
 }
 #name {
     display: flex;
@@ -21,3 +25,21 @@
 /* .container {
     width: 85%;
 } */
+.fileInput {
+    position:relative;
+    z-index:2;
+    width:100%;
+    height:calc(1.5em + .75rem + 2px);
+    margin:0;
+    /* opacity:0; */
+}
+/* .editCardTitle {
+    font-size: 1em;
+} */
+
+.editFormImg {
+    width: 150px;
+    height: auto;
+    border: 1.5px solid grey;
+    border-radius: 4px;
+}

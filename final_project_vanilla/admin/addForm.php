@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['addImage'])){
+if (isset($modify)){
     // echo("Worked!");
     //$_FILES
 
@@ -7,46 +7,51 @@ if (isset($_POST['addImage'])){
     $size = $_FILES['addImage']['size'] / 1024;
     $tmpName = $_FILES['addImage']['tmp_name'];
     $dir =   getcwd() . DIRECTORY_SEPARATOR . "..";
-    echo ($dir);
     $dir =  $dir. DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $name;
     // echo $name . " " . $size . " " . $tmpName;
     
-    echo($dir);
-    echo ($name);
-    // move_uploaded_file($tmpName, $dir);
+    
+    
 
+    if (!empty($newProdName) && !empty($newPrice) && !empty($newQty) && !empty($name)) {
+        move_uploaded_file($tmpName, $dir);
+        addProduct($newProdName, $newPrice, $newQty, $name);
+        // echo ("<h4>Added $addProdName</h4><br>");
+    } else {
+        echo("<h3>You must fill every box</h3>");
+    }
 }
 
-echo ($addProdName . "<br>");
-echo ($addQty . "<br>");
-echo ($addImage . "<br>");
+
 ?>
 
 
 <form action="index.php" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
-        <label for="addProdName">Product Name:</label>
-        <input type="text" class="form-control" id="addProdName" placeholder="Enter product name" name='addProdName'>
+        <label for="newProdName">Product Name:</label>
+        <input type="text" class="form-control" id="newProdName" placeholder="Enter product name" name='newProdName'>
     </div>
     <div class="form-group">
-        <label for="addQty">Quantity in Stock:</label>
-        <input type="text" class="form-control" id="addQty" placeholder="Enter quantity in stock" name='addQty'>
+        <label for="newProdName">Price:</label>
+        <input type="text" class="form-control" id="newPrice" placeholder="Enter price" name='newPrice'>
+    </div>
+    <div class="form-group">
+        <label for="newQty">Quantity in Stock:</label>
+        <input type="text" class="form-control" id="newQty" placeholder="Enter quantity in stock" name='newQty'>
     </div>
     <div class="form-group">
         <label for="addImage">Image:</label>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="addImage"
-                name='addImage'>
-                <!-- <input type="file" name="myImage" id=""> -->
-            <label class="custom-file-label text-muted" for="inputGroupFile03">Choose image</label>
-        </div>
-    </div>
 
-    <!-- <input type="submit" value="Add Product"> -->
-    <button type="submit" class="btn btn-outline-dark rounded-0">Add Product</button>
-    <input type="hidden" name="added"> <!-- value='true' -->
+        <div class="input-group mb-3 form-control" style='padding: 0px; height: 100%;' placeholder='Image'>
+            <input type="file" id='inputBtn' class='padding: 0px; margin: 0px; width: 100%;' name='newImage'>
+        </div>
+
+    </div>
+    <input type="hidden" name="modify">
     <input type="hidden" name="adminBtn" value="<?=$adminBtn?>">
+    <button type="submit" class="btn btn-outline-dark rounded-0">Add Product</button>
+
 
 
 </form>
