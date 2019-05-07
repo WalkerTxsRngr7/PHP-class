@@ -1,4 +1,4 @@
-<form id='loginForm'>
+<form id='loginForm' action='' method='post'>
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
     <div class="col-sm-10">

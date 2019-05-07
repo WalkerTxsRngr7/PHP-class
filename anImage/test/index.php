@@ -6,7 +6,12 @@
         $name = $_FILES['myImage']['name'];
         $size = $_FILES['myImage']['size'] / 1024;
         $tmpName = $_FILES['myImage']['tmp_name'];
-        $dir = getcwd() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $name;
+        // $dir = getcwd() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $name;
+        $dir =   getcwd() . DIRECTORY_SEPARATOR . "..";
+        echo ($dir);
+        $dir =  $dir. DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $name;
+    
+
         
 
         // echo $name . " " . $size . " " . $tmpName;

@@ -1,33 +1,28 @@
 <?php
-session_start();
-$title = "Admin";
-include "../views/header.php";
-include '../models/requests.php';
+if (isset($_SESSION['login']) != "valid"){
+    header("Location: ../admin");
+}
 ?>
-<h1>Admin</h1>
 
-
+<div class="adminBtns">
+    <form method="post">
+        <button type="submit" class="btn btn-outline-dark rounded-0" name="adminBtn" value='add'>Add</button>
+        <button type="submit" class="btn btn-outline-dark rounded-0" name="adminBtn" value='edit'>Edit</button>
+        <button type="submit" class="btn btn-outline-dark rounded-0" name="adminBtn" value='orders'>Orders</button>
+    </form>
+</div>
 
 <?php
-    if (isset($username) && isset($password)){
-        if ($username == 'Walker' && $password == 'pass') {
-            $_SESSION['login'] = 'valid';
-        } else {
-            echo ("<h3 style='color: red;'>Your Username or Password is incorrect</h3>");
-        }
-        
-    }
 
-    if (!isset($_SESSION['login'])){
-        include "./login.php";
-    } else if ($_SESSION['login'] != "valid"){
-        header("Location: ../product");
-    }
+if ($adminBtn == "add"){
+    include "./addForm.php";
+} else if ($adminBtn == "add"){
+    include "./editForm.php";
+} else if ($adminBtn == "add"){
+    include "orders.php";
+}
 
 
 
 
-
-include "../views/footer.php";
-  
 ?>

@@ -1,6 +1,6 @@
 <div class="card text-center" id='footer'>
     <div class="card-footer text-muted">
-        <a href="../admin/admin.php" style='text-decoration: none; color: black'>Admin</a>
+        <a href="../admin/" style='text-decoration: none; color: black'>Admin</a>
     </div>
 </div>
 </div>
