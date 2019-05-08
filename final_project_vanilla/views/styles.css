@@ -1,45 +1,185 @@
-.prodQtyBtn {
-    width: 200px;
+:root {
+    --main-grey: rgb(61, 68, 74);
+    --main-dark-grey: #343A40;
+    --main-light-white: #FFFFFF;
+  }
+
+html, body {
+    min-height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+  }
+body {
+    background-color: var(--main-grey);
     
+}
+.container {
+    background-color: var(--main-dark-grey);
+    min-height: 98vh;
+    padding: 0px;
+    width: 90%;
+    position: relative;
+    padding-bottom: 50px;
+    margin-bottom: 0px;
+    align-content: center;
+}
+.card-deck {
+    justify-content: center;
+}
+table {
+    margin: 50px 0px;
+    border-left-color: white;
+    border-right-color: white;
+    border-color: white;
+    border: 1px solid;
+}
+.prodQtyBtn {
+    width: 130px;
+    position: absolute;
+    left: 20px;
+    bottom: 15px;    
+}
+.cart {
+    width: 70%;
+    margin: auto;
+    position: relative;
+    font-size: 1.5em;
+    margin-top: 50px;
 }
 .cartBtn {
     position: fixed;
     right: 10px;
     top: 10px;
 }
+.cartImg {
+    width: 200px;
+    height: auto;
+    right: 0px;
+    top: 0px;
+    position: absolute;
+
+}
+.card {
+    background-color: var(--main-grey);
+    border-color: var(--main-light-white);
+    border-radius: 0px;
+    padding: 0px;
+}
+.card-img-top {
+    border-radius: 0px;
+}
+.prodCardBody {
+    position: relative;
+    min-height: 150px;
+}
+p.price{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.4em;
+}
+.qty {
+position: absolute;
+bottom: 5px;
+right: 10px;
+}
 .prodCard {
     max-width: 350px;
     min-width: 250px;
+    margin: 15px;
+}
+.editCardBody {
+    position: relative;
+    min-height: 130px;
 }
 .editCard {
     max-width: 200px;
     min-width: 150px;
+    margin: 15px;
 }
-#name {
-    display: flex;
-    margin: 20px;
+.editCardBtn {
+    position: absolute;
+    left: 15px;
+    bottom: 10px; 
+}
+#name {    
+    width: 202px;
+    
+    font-size: 1.1em;
+    margin: auto;
+    margin-top: 90px;
+}
+#btnName {
+    margin-top: 15px;
 }
 #footer {
     max-width: initial;
+    background-color: white;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0px;
 }
-/* .container {
-    width: 85%;
-} */
+#footer.card {
+    border: none;
+}
+
+#adminBtnAlert {
+    margin: 15px;
+}
 .fileInput {
-    position:relative;
+    position: relative;
     z-index:2;
     width:100%;
     height:calc(1.5em + .75rem + 2px);
     margin:0;
-    /* opacity:0; */
 }
-/* .editCardTitle {
-    font-size: 1em;
-} */
-
+#editForm {
+    margin: 20px;
+}
 .editFormImg {
     width: 150px;
     height: auto;
     border: 1.5px solid grey;
     border-radius: 4px;
+}
+.card-deck {
+    margin: 20px;
+}
+a.nav {
+    color: white;
+    text-decoration: none;
+    top: 10px;
+    position: absolute;
+}
+#lo {
+    right: 15px;
+}
+#home {
+    left: 15px; 
+}
+div.nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--main-dark-grey);
+    z-index: 2;
+} 
+.headTitle{
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+}
+#addForm {
+    margin: 20px;
+}
+.modMessage{
+    margin: 30px;
+    font-size: 2em;
+    text-align: center;
+}
+#loginForm {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
 }

@@ -1,14 +1,11 @@
 <?php
 if (isset($modify)){
-    // echo("Worked!");
-    //$_FILES
 
-    $name = $_FILES['addImage']['name'];
-    $size = $_FILES['addImage']['size'] / 1024;
-    $tmpName = $_FILES['addImage']['tmp_name'];
+    $name = $_FILES['newImage']['name'];
+    $size = $_FILES['newImage']['size'] / 1024;
+    $tmpName = $_FILES['newImage']['tmp_name'];
     $dir =   getcwd() . DIRECTORY_SEPARATOR . "..";
     $dir =  $dir. DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $name;
-    // echo $name . " " . $size . " " . $tmpName;
     
     
     
@@ -16,8 +13,6 @@ if (isset($modify)){
     if (!empty($newProdName) && !empty($newPrice) && !empty($newQty) && !empty($name)) {
         move_uploaded_file($tmpName, $dir);
         addProduct($newProdName, $newPrice, $newQty, $name);
-        // echo ("<h4>Added $addProdName</h4><br>");
-    } else {
         echo("<h3>You must fill every box</h3>");
     }
 }
@@ -26,7 +21,7 @@ if (isset($modify)){
 ?>
 
 
-<form action="index.php" method="post" enctype="multipart/form-data">
+<form id='addForm' action="index.php" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
         <label for="newProdName">Product Name:</label>
@@ -50,8 +45,6 @@ if (isset($modify)){
     </div>
     <input type="hidden" name="modify">
     <input type="hidden" name="adminBtn" value="<?=$adminBtn?>">
-    <button type="submit" class="btn btn-outline-dark rounded-0">Add Product</button>
-
-
+    <button type="submit" class="btn btn-outline-light rounded-0">Add Product</button>
 
 </form>

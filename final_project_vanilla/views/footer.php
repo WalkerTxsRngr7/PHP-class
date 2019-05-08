@@ -1,8 +1,8 @@
-<div class="card text-center" id='footer'>
-    <div class="card-footer text-muted">
-        <a href="../admin/" style='text-decoration: none; color: black'>Admin</a>
+    <div class="card text-center" id='footer'>
+        <div class="card-footer text-muted">
+            <a href="../admin/" style='text-decoration: none; color: black'>$store</a>
+        </div>
     </div>
-</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

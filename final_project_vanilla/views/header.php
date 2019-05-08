@@ -1,7 +1,4 @@
 <?php
-
-
-
 $lo = filter_input(INPUT_GET, 'lo');
         if ($lo == "y"){
             $_SESSION = array();
@@ -27,12 +24,11 @@ $lo = filter_input(INPUT_GET, 'lo');
 
     <?php
         include "../models/db.php";
-        // include "../views/header.php";
-
-        
-        //print_r($aryCat);
-        // include "../models/categories_db.php";
         include "../models/products_db.php";
     ?>
     <div class="container">
-        <a href="?lo=y">Log Out</a> | <a href="../product/">Home</a>
+        <div class="nav">
+            <a href="../product/" class='nav' id='home'>Home</a>
+            <a href="?lo=y" class='nav' id='lo'>Log Out</a>
+            <h1 class='headTitle'><?=$headTitle?></h1>
+        </div>

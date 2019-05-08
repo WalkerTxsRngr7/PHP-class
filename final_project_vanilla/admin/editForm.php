@@ -28,18 +28,18 @@ if (isset($modify)){
 
             <div class="card editCard">
                 <img src="../images/<?=$product['imageName']?>" class="card-img-top" alt="<?=$product['productName']?>">
-                <div class="card-body">
-                    <h6 class="card-title editCardTitle"><?=$product['productName']?></h6>
-                    <p class="card-text">$<?=$product['price']?></p>
+                <div class="card-body editCardBody">
+                    <h6 class="card-title"><?=$product['productName']?></h6>
+                    <p class="card-text price">$<?=$product['price']?></p>
                     <form action="" method="post">
-                        <div class="input-group prodCard">
+                        <div class="input-group editCardBtn">
                             <input type="hidden" name='productID' value='<?=$product['productID']?>'>
                             <input type="hidden" name="adminBtn" value="<?=$adminBtn?>">
-                            <button class="btn btn-outline-secondary rounded-0" type="submit">Edit</button>
+                            <button class=" btn btn-outline-light rounded-0" type="submit">Edit</button>
                         </div>
                 </div>
                 </form>
-                <p class="card-text"><small class="text-muted">In Stock: <?=$product['qty']?></small></p>
+                <p class="card-text qty"><small class="text-muted">In Stock: <?=$product['qty']?></small></p>
             </div>
 
 <?php
@@ -51,7 +51,7 @@ if (isset($modify)){
 if (isset($productID)){
     $product = prodByID($productID);
         ?>
-    <form action="index.php" method="post" enctype="multipart/form-data">
+    <form id='editForm' action="index.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="newProdName">Product Name:</label>
             <input type="text" class="form-control" id="newProdName" placeholder="Enter product name" name='newProdName'
@@ -77,7 +77,7 @@ if (isset($productID)){
             <input type="hidden" name="modify">
             <input type="hidden" name="adminBtn" value="<?=$adminBtn?>">
             <input type="hidden" name="productID" value="<?=$productID?>">
-            <button type="submit" class="btn btn-outline-dark rounded-0">Edit Product</button>
+            <button type="submit" class="btn btn-outline-light rounded-0">Edit Product</button>
         </div>
     </form>
 

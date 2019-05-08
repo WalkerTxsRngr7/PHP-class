@@ -1,6 +1,7 @@
 <?php
 session_start();
 $title = "Home";
+$headTitle = "\$store Cart";
 include "../views/header.php";
 include '../models/requests.php';
 if ($customerName != ""){
@@ -9,64 +10,46 @@ if ($customerName != ""){
 }
 if (!isset($_SESSION['name'])){
     echo("
-    <form action='cart.php' method='get'>
-    <div id='name'>
+    <form id='name' action='cart.php' method='get'>
         <p>Enter your name: </p>
-        <input type='text' name='customerName' style='margin-left: 15px; height: 25px'>
+        <input type='text' name='customerName'>
         <input type='hidden' name='productID' value='$productID'>
         <input type='hidden' name='qty' value='$qty'>
-    </div>
-    <input type='submit' class='btn btn-outline-success' value='Submit'>
+        <br>
+        <input type='submit' class='btn btn-outline-success' id='btnName' value='Submit'>
     </form>
     ");
     
 
 } else if ($qty != null){
-    cart($productID, $qty);
-    
-    // $product = prodByID($productID);
-    // echo("Order: <br>Product: " . $product['productName'] . "       Qty: " . $qty . "<br><br>");
-    // if ($orderNow == 'now'){
-    //     header("Location: cart.php");
-    // }
+    $product = prodByID($productID);
+    ?>
+<div class="cart">
+    <p><?=$product['productName']?></p>
+    <img class='cartImg' src="../images/<?=$product['imageName']?>" alt="<?=$product['productName']?>">
+    <h6>Price:</h6>
+    <p>$<?=$product['price']?></p>
+    <h6>Quantity:</h6>
+    <p><?=$qty?></p>
+    <h6>Total:</h6>
+    <p>$<?=$product['price'] * $qty?></p>
 
-?>
-<form class='order' action="cart.php" method="get">
-    <?php
-    
-
-
-
-
-    echo("<input type='hidden' name='productID' value='$productID'>");
-    echo("<input type='hidden' name='qty' value='$qty'>");
-?>
-    <input type="submit" class='btn btn-outline-success' name='order' value="Order">
-    <!-- <button type='submit' class='btn btn-outline-success' name='order' value='confirm'>Order</button> -->
-</form>
+    <form class='order' action="./cart.php" method="get">
+        <input type='hidden' name='productID' value='<?=$productID?>'>
+        <input type='hidden' name='qty' value='<?=$qty?>'>
+        <input type="submit" class='btn btn-outline-success' name='order' value="Order">
+    </form>
+</div>
 <?php
 }
 else {
     echo("<h2>Your cart is empty</h2>");
 }
-    // print_r($_SESSION);
-    // printCart();
-    
     
         if ($order != null){
             order($productID, $qty);
         }
     
-    ?>
-
-<!-- <button type='button' name='order' value='confirm' >Order</button> -->
-
-
-<?php
-
-
-
-
 
 include "../views/footer.php";
 ?>
